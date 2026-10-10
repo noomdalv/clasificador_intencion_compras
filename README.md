@@ -146,16 +146,54 @@ La síntesis para presentar o estudiar está en `informes/conclusiones.md`. Resu
 
 ## Refactorización a POO
 
-Las responsabilidades reutilizables viven en el paquete `clasificador_compras/`; los archivos de `ejecutables/` son puntos de entrada que permiten ejecutar cada paso desde la terminal o Cursor.
+La programación orientada a objetos (POO) organiza el código en **clases** que reúnen datos y acciones relacionadas. Una clase funciona como un plano; cuando un programa la usa, crea un objeto para realizar una tarea. En este proyecto, por ejemplo, `AuditorDatos` reúne las acciones para revisar el dataset, y su método `ejecutar()` coordina el proceso.
 
-- `RutasProyecto` centraliza las carpetas del proyecto.
-- `AuditorDatos` obtiene el archivo de UCI y crea la auditoría inicial.
-- `AnalizadorExploratorio` calcula resúmenes y relaciones descriptivas del dataset.
-- `DivisorDatos` agrupa sesiones con los mismos predictores y prepara entrenamiento/prueba sin permitir que un grupo aparezca en ambos.
-- `ConfiguracionModelo` concentra decisiones compartidas, como objetivo, tipos de variables, semilla, pliegues y umbral.
-- `FabricaModelos` crea los preprocesadores, modelos y estrategia de validación cruzada.
-- `InterpreteModelo` explica los coeficientes del modelo usando el artefacto y el conjunto de entrenamiento; no lee el conjunto de prueba.
+### Estructura de carpetas y archivos
+
+```text
+online_shoppers_project/
+├── clasificador_compras/       # Clases y componentes reutilizables
+│   ├── __init__.py             # Expone las clases principales del paquete
+│   ├── flujo_datos.py          # Rutas, auditoría, exploración y partición
+│   ├── modelado.py             # Configuración y creación de modelos
+│   └── interpretacion.py       # Interpretación del modelo
+├── ejecutables/                # Entradas para iniciar cada etapa
+│   ├── revisar_datos.py
+│   ├── explorar_datos.py
+│   ├── preparar_division.py
+│   ├── validacion_inicial.py
+│   ├── comparar_modelos.py
+│   ├── evaluar_final.py
+│   └── interpretar_modelo.py
+├── datos/
+│   ├── originales/             # CSV fuente de UCI
+│   └── preparados/             # Entrenamiento y prueba
+├── informes/                   # Auditorías, métricas y conclusiones
+├── modelos/                    # Pipeline entrenado
+├── notebook_visualizaciones.ipynb
+├── requirements.txt
+└── README.md
+```
+
+### Qué responsabilidad tiene cada clase
+
+- En `flujo_datos.py`, `RutasProyecto` reúne las rutas de las carpetas; `AuditorDatos` revisa el dataset original; `AnalizadorExploratorio` prepara resúmenes descriptivos; y `DivisorDatos` crea los grupos de entrenamiento y prueba.
+- En `modelado.py`, `ConfiguracionModelo` concentra decisiones compartidas, como la variable objetivo, los predictores y la semilla. `FabricaModelos` crea los preprocesadores, los clasificadores y la estrategia de validación cruzada.
+- En `interpretacion.py`, `InterpreteModelo` lee el modelo guardado y los datos de entrenamiento para generar el informe de coeficientes. No lee el conjunto de prueba.
+
+### Cómo se conectan los archivos
+
+Los archivos de `ejecutables/` son **puntos de entrada**: indican qué tarea se desea iniciar. Por ejemplo, `ejecutables/revisar_datos.py` crea un objeto de `AuditorDatos` y llama a `ejecutar()`. La clase realiza la auditoría y guarda el resultado en `informes/`. Del mismo modo, `preparar_division.py` inicia `DivisorDatos`, y `interpretar_modelo.py` inicia `InterpreteModelo`.
+
+Los scripts de modelado (`validacion_inicial.py`, `comparar_modelos.py` y `evaluar_final.py`) comparten `ConfiguracionModelo` y `FabricaModelos` para construir y validar los clasificadores sin duplicar las decisiones principales. En conjunto, el flujo queda así:
+
+```text
+ejecutables/ → clases de clasificador_compras/ → archivos de datos, informes y modelos
+```
+
+Esta separación permite encontrar con facilidad dónde comienza cada etapa y dónde vive la lógica reutilizable. Para ejecutar un paso, se usa el script correspondiente en `ejecutables/`; las clases no necesitan iniciarse manualmente desde el notebook.
 
 Los nombres de módulos, clases, funciones, carpetas y archivos propios están en español para que el proyecto sea más fácil de seguir. Conservamos en inglés los nombres originales de las columnas de UCI y los nombres que exige scikit-learn; traducirlos impediría conectar el código con esos datos y herramientas.
 
 La refactorización organiza el flujo y evita mantener copias de la misma lógica en varios scripts. Las comprobaciones después de los cambios se limitan al flujo de datos y a la validación cruzada; la evaluación final no se repite para no volver a consultar el conjunto de prueba.
+
