@@ -6,14 +6,14 @@ Proyecto académico para estimar si una sesión de navegación en una tienda en 
 
 ## Guía rápida para revisar el proyecto
 
-1. Lee `informes/conclusiones.md` para conocer el objetivo, las decisiones metodológicas, los resultados y sus límites.
-2. Abre `notebook_visualizaciones.ipynb` para revisar las gráficas y el resumen de resultados. Necesita `datos/preparados/entrenamiento.csv` e `informes/evaluacion_final.json`.
-3. Consulta los informes de `informes/` para ver la auditoría, el análisis exploratorio, la comparación de modelos, la evaluación final y la interpretación.
-4. Revisa `clasificador_compras/` y `ejecutables/` para seguir la implementación.
+1. `informes/conclusiones.md` presenta el objetivo, las decisiones metodológicas, los resultados y sus límites.
+2. `notebook_visualizaciones.ipynb` contiene las gráficas y el resumen de resultados. Requiere `datos/preparados/entrenamiento.csv` e `informes/evaluacion_final.json`.
+3. La carpeta `informes/` reúne la auditoría, el análisis exploratorio, la comparación de modelos, la evaluación final y la interpretación.
+4. La implementación está organizada en `clasificador_compras/` y `ejecutables/`.
 
-Para ejecutar el proyecto en otra computadora, crea un entorno de Python e instala `requirements.txt` siguiendo la sección **Preparar Python en una computadora nueva**. El entorno `.venv/` no se incluye en GitHub porque cada persona debe crearlo localmente. El `.gitignore` también excluye archivos temporales de Python.
+Para ejecutar el proyecto en otra computadora, se crea un entorno de Python y se instalan las dependencias de `requirements.txt`, como se explica en **Preparar Python en una computadora nueva**. El entorno `.venv/` no se incluye en GitHub: cada persona lo crea localmente. El `.gitignore` también excluye archivos temporales de Python.
 
-Al publicar el repositorio, conserva los datos originales y preparados, los informes, el modelo guardado, el notebook, el código y `requirements.txt`: juntos permiten revisar los resultados y entender cómo se generaron. El ZIP descargado de UCI es opcional si ya incluyes el CSV original extraído. Mantén la atribución y la licencia del dataset indicadas más abajo.
+En el repositorio se conservan los datos originales y preparados, los informes, el modelo guardado, el notebook, el código y `requirements.txt`; estos archivos permiten revisar los resultados y entender cómo se generaron. El ZIP descargado de UCI es opcional cuando ya está incluido el CSV original extraído. La atribución y la licencia del dataset se indican más abajo.
 
 ## Fuente y atribución
 
@@ -25,7 +25,7 @@ Al publicar el repositorio, conserva los datos originales y preparados, los info
 
 ## Descargar y auditar
 
-Desde esta carpeta, ejecuta:
+Desde esta carpeta, se ejecuta:
 
 ```powershell
 python ejecutables/revisar_datos.py
@@ -47,7 +47,7 @@ Los resultados completos están en `informes/auditoria_datos.json`. Esta etapa c
 
 ## Análisis exploratorio
 
-Ejecuta desde esta carpeta:
+Desde esta carpeta, se ejecuta:
 
 ```powershell
 python ejecutables/explorar_datos.py
@@ -59,7 +59,7 @@ Como siguiente metodología de evaluación, se propone reservar 20% para prueba 
 
 ## Notebook de visualizaciones
 
-Puedes abrir `notebook_visualizaciones.ipynb` en cualquier editor o aplicación que admita notebooks `.ipynb`; no hace falta usar Cursor. Por ejemplo, puedes usar JupyterLab o VS Code con el soporte para notebooks habilitado.
+`notebook_visualizaciones.ipynb` puede abrirse en cualquier editor o aplicación que admita notebooks `.ipynb`; no depende de Cursor. Entre las opciones compatibles están JupyterLab y VS Code con el soporte para notebooks habilitado.
 
 ### Preparar Python en una computadora nueva
 
@@ -79,9 +79,9 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-**Seleccionar el intérprete o kernel** significa indicarle al editor qué instalación de Python debe usar al ejecutar las celdas. Elige la de `.venv`, creada en el paso anterior; ahí quedan disponibles pandas, matplotlib y el soporte de kernel que instala `requirements.txt`.
+**Seleccionar el intérprete o kernel** significa indicar al editor qué instalación de Python ejecutará las celdas. Se selecciona el intérprete de `.venv`, creado en el paso anterior; allí quedan disponibles pandas, matplotlib y el soporte de kernel instalado desde `requirements.txt`.
 
-El notebook espera que la carpeta del proyecto incluya `datos/preparados/entrenamiento.csv` e `informes/evaluacion_final.json`. Si lo abres en un servicio remoto como Colab, también tendrás que subir esos archivos conservando esa estructura de carpetas o ajustar las rutas del notebook.
+El notebook espera que la carpeta del proyecto incluya `datos/preparados/entrenamiento.csv` e `informes/evaluacion_final.json`. En servicios remotos como Colab, esos archivos también deben cargarse con la misma estructura de carpetas o deben ajustarse las rutas del notebook.
 
 El notebook usa solo el archivo de entrenamiento para describir los datos y lee las métricas finales ya guardadas en `informes/evaluacion_final.json`; no vuelve a abrir ni evaluar `prueba.csv`.
 
@@ -89,7 +89,7 @@ Incluye cuatro gráficos: balance de compras en entrenamiento, tasa de compra po
 
 ## Partición de entrenamiento y prueba
 
-Ejecuta:
+Para crear las particiones, se ejecuta:
 
 ```powershell
 python ejecutables/preparar_division.py
@@ -116,7 +116,7 @@ Primera ejecución: el modelo mayoritario logró 84.53% de exactitud y 0% de rec
 
 ## Comparar modelos y umbrales
 
-Ejecuta:
+Para comparar los modelos, se ejecuta:
 
 ```powershell
 .\.venv\Scripts\python.exe ejecutables/comparar_modelos.py
@@ -138,7 +138,7 @@ El objetivo será estimar si una sesión terminará en compra antes de que final
 
 ## Interpretación del modelo
 
-Ejecuta `python ejecutables/interpretar_modelo.py` con el entorno `.venv` activo. Lee el pipeline entrenado y el conjunto de entrenamiento, nunca el conjunto de prueba. Genera `informes/interpretacion_modelo.md` y `informes/pesos_variables.csv`. Los coeficientes explican cómo el modelo construye su score, no efectos causales. Revisa el número de sesiones de cada categoría: algunos pesos grandes corresponden a niveles poco frecuentes y pueden ser inestables.
+La interpretación se genera mediante `python ejecutables/interpretar_modelo.py` con el entorno `.venv` activo. El proceso lee el pipeline entrenado y el conjunto de entrenamiento, nunca el conjunto de prueba. Produce `informes/interpretacion_modelo.md` e `informes/pesos_variables.csv`. Los coeficientes explican cómo el modelo construye su score, no efectos causales. El número de sesiones de cada categoría debe considerarse al leer los pesos: algunos valores grandes corresponden a niveles poco frecuentes y pueden ser inestables.
 
 ## Informe final del proyecto
 
@@ -146,7 +146,7 @@ La síntesis para presentar o estudiar está en `informes/conclusiones.md`. Resu
 
 ## Refactorización a POO
 
-La programación orientada a objetos (POO) organiza el código en **clases** que reúnen datos y acciones relacionadas. Una clase funciona como un plano; cuando un programa la usa, crea un objeto para realizar una tarea. En este proyecto, por ejemplo, `AuditorDatos` reúne las acciones para revisar el dataset, y su método `ejecutar()` coordina el proceso.
+La programación orientada a objetos (POO) organiza el código mediante **clases** que reúnen información y operaciones relacionadas. Una clase funciona como una plantilla; al crear un objeto, se obtiene una instancia que puede realizar esas operaciones. En este proyecto, `AuditorDatos` agrupa las acciones de revisión del dataset y su método `ejecutar()` coordina la auditoría.
 
 ### Estructura de carpetas y archivos
 
@@ -183,7 +183,7 @@ clasificador_intencion_compras/
 
 ### Cómo se conectan los archivos
 
-Los archivos de `ejecutables/` son **puntos de entrada**: indican qué tarea se desea iniciar. Por ejemplo, `ejecutables/revisar_datos.py` crea un objeto de `AuditorDatos` y llama a `ejecutar()`. La clase realiza la auditoría y guarda el resultado en `informes/`. Del mismo modo, `preparar_division.py` inicia `DivisorDatos`, y `interpretar_modelo.py` inicia `InterpreteModelo`.
+Los archivos de `ejecutables/` son **puntos de entrada**: cada uno inicia una etapa del proyecto. Por ejemplo, `ejecutables/revisar_datos.py` crea un objeto de `AuditorDatos` e invoca `ejecutar()`. Ese método coordina la auditoría y guarda el resultado en `informes/`. De forma similar, `preparar_division.py` inicia el trabajo de `DivisorDatos`, mientras que `interpretar_modelo.py` inicia el de `InterpreteModelo`.
 
 Los scripts de modelado (`validacion_inicial.py`, `comparar_modelos.py` y `evaluar_final.py`) comparten `ConfiguracionModelo` y `FabricaModelos` para construir y validar los clasificadores sin duplicar las decisiones principales. En conjunto, el flujo queda así:
 
@@ -191,9 +191,10 @@ Los scripts de modelado (`validacion_inicial.py`, `comparar_modelos.py` y `evalu
 ejecutables/ → clases de clasificador_compras/ → archivos de datos, informes y modelos
 ```
 
-Esta separación permite encontrar con facilidad dónde comienza cada etapa y dónde vive la lógica reutilizable. Para ejecutar un paso, se usa el script correspondiente en `ejecutables/`; las clases no necesitan iniciarse manualmente desde el notebook.
+Esta separación muestra con claridad dónde comienza cada etapa y dónde se encuentra la lógica reutilizable. La ejecución de cada paso comienza en el script correspondiente de `ejecutables/`; las clases no se inician manualmente desde el notebook.
 
-Los nombres de módulos, clases, funciones, carpetas y archivos propios están en español para que el proyecto sea más fácil de seguir. Conservamos en inglés los nombres originales de las columnas de UCI y los nombres que exige scikit-learn; traducirlos impediría conectar el código con esos datos y herramientas.
+Los nombres de módulos, clases, funciones, carpetas y archivos propios están en español para que el proyecto sea más fácil de seguir. Se mantienen en inglés los nombres originales de las columnas de UCI y los nombres que exige scikit-learn; traducirlos impediría conectar el código con esos datos y herramientas.
 
 La refactorización organiza el flujo y evita mantener copias de la misma lógica en varios scripts. Las comprobaciones después de los cambios se limitan al flujo de datos y a la validación cruzada; la evaluación final no se repite para no volver a consultar el conjunto de prueba.
+
 
