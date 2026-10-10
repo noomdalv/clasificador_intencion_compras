@@ -2,6 +2,8 @@
 
 Proyecto académico para estimar si una sesión de navegación en una tienda en línea terminará en una compra (`Revenue`). Incluye auditoría y análisis de los datos, preparación de las particiones, comparación de modelos, evaluación final, interpretación y visualizaciones en un notebook.
 
+**Repositorio:** [github.com/noomdalv/clasificador_intencion_compras](https://github.com/noomdalv/clasificador_intencion_compras)
+
 ## Guía rápida para revisar el proyecto
 
 1. Lee `informes/conclusiones.md` para conocer el objetivo, las decisiones metodológicas, los resultados y sus límites.
