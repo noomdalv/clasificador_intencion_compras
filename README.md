@@ -11,7 +11,7 @@ Proyecto académico para estimar si una sesión de navegación en una tienda en 
 3. La carpeta `informes/` reúne la auditoría, el análisis exploratorio, la comparación de modelos, la evaluación final y la interpretación.
 4. La implementación está organizada en `clasificador_compras/` y `ejecutables/`.
 
-Para ejecutar el proyecto en otra computadora, se crea un entorno de Python y se instalan las dependencias de `requirements.txt`, como se explica en **Preparar Python en una computadora nueva**. El entorno `.venv/` no se incluye en GitHub: cada persona lo crea localmente. El `.gitignore` también excluye archivos temporales de Python.
+Para ejecutar el proyecto, se crea un entorno de Python y se instalan las dependencias de `requirements.txt`, como se explica en **Preparar Python en una computadora nueva**. El entorno `.venv/` no se incluye en GitHub: cada persona lo crea localmente. El `.gitignore` también excluye archivos temporales de Python.
 
 En el repositorio se conservan los datos originales y preparados, los informes, el modelo guardado, el notebook, el código y `requirements.txt`; estos archivos permiten revisar los resultados y entender cómo se generaron. El ZIP descargado de UCI es opcional cuando ya está incluido el CSV original extraído. La atribución y la licencia del dataset se indican más abajo.
 
