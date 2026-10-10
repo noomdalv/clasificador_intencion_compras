@@ -1,0 +1,59 @@
+{
+  "source_file": "online_shoppers_intention.csv",
+  "target": "Revenue",
+  "excluded_features": [
+    "PageValues"
+  ],
+  "test_fraction_requested": 0.2,
+  "random_seed": 42,
+  "split_method": "deterministic greedy stratified group split by identical feature vectors; 100 seeded candidate assignments, seed base 42",
+  "rows_total": 12330,
+  "rows_train": 9864,
+  "rows_test": 2466,
+  "train_class_balance": {
+    "False": {
+      "rows": 8338,
+      "percentage": 84.53
+    },
+    "True": {
+      "rows": 1526,
+      "percentage": 15.47
+    }
+  },
+  "test_class_balance": {
+    "False": {
+      "rows": 2084,
+      "percentage": 84.51
+    },
+    "True": {
+      "rows": 382,
+      "percentage": 15.49
+    }
+  },
+  "unique_feature_groups_total": 12205,
+  "unique_feature_groups_test": 2341,
+  "identical_feature_groups_in_both_splits": 0,
+  "output_columns": [
+    "Administrative",
+    "Administrative_Duration",
+    "Informational",
+    "Informational_Duration",
+    "ProductRelated",
+    "ProductRelated_Duration",
+    "BounceRates",
+    "ExitRates",
+    "SpecialDay",
+    "Month",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType",
+    "VisitorType",
+    "Weekend",
+    "Revenue"
+  ],
+  "files": {
+    "train": "datos\\preparados\\entrenamiento.csv",
+    "test": "datos\\preparados\\prueba.csv"
+  }
+}

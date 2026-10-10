@@ -1,0 +1,49 @@
+{
+  "source_file": "online_shoppers_intention.csv",
+  "rows": 12330,
+  "columns": [
+    "Administrative",
+    "Administrative_Duration",
+    "Informational",
+    "Informational_Duration",
+    "ProductRelated",
+    "ProductRelated_Duration",
+    "BounceRates",
+    "ExitRates",
+    "PageValues",
+    "SpecialDay",
+    "Month",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType",
+    "VisitorType",
+    "Weekend",
+    "Revenue"
+  ],
+  "column_count": 18,
+  "expected_columns_match": true,
+  "missing_or_unknown_by_column": {},
+  "revenue_counts": {
+    "False": 10422,
+    "True": 1908
+  },
+  "revenue_percentages": {
+    "False": 84.53,
+    "True": 15.47
+  },
+  "duplicate_full_rows_after_first": 125,
+  "file_bytes": 1072063,
+  "file_megabytes_decimal": 1.07,
+  "approx_python_field_strings_mib": 9.48,
+  "pagevalues_by_revenue": {
+    "True": {
+      "rows": 1908,
+      "nonzero_pagevalues": 1538
+    },
+    "False": {
+      "rows": 10422,
+      "nonzero_pagevalues": 1192
+    }
+  }
+}

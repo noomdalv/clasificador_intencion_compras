@@ -1,0 +1,150 @@
+{
+  "training_rows": 9864,
+  "test_rows_used": 0,
+  "target_positive_label": "Revenue=True",
+  "excluded_features": [
+    "PageValues"
+  ],
+  "folds": 5,
+  "random_seed": 42,
+  "cv_method": "StratifiedGroupKFold; identical feature vectors stay together",
+  "scikit_learn_version": "1.9.1",
+  "modelos": {
+    "majority_baseline": {
+      "accuracy": {
+        "fold_scores": [
+          0.8454,
+          0.8454,
+          0.8454,
+          0.8453,
+          0.8449
+        ],
+        "mean": 0.8453,
+        "std": 0.0002
+      },
+      "precision": {
+        "fold_scores": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "recall": {
+        "fold_scores": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "f1": {
+        "fold_scores": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "roc_auc": {
+        "fold_scores": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "average_precision": {
+        "fold_scores": [
+          0.1546,
+          0.1546,
+          0.1546,
+          0.1547,
+          0.1551
+        ],
+        "mean": 0.1547,
+        "std": 0.0002
+      }
+    },
+    "logistic_regression_balanced": {
+      "accuracy": {
+        "fold_scores": [
+          0.6548,
+          0.6771,
+          0.6351,
+          0.643,
+          0.629
+        ],
+        "mean": 0.6478,
+        "std": 0.017
+      },
+      "precision": {
+        "fold_scores": [
+          0.2746,
+          0.2915,
+          0.2509,
+          0.2667,
+          0.2517
+        ],
+        "mean": 0.2671,
+        "std": 0.0151
+      },
+      "recall": {
+        "fold_scores": [
+          0.7508,
+          0.7607,
+          0.6852,
+          0.7475,
+          0.7059
+        ],
+        "mean": 0.73,
+        "std": 0.0292
+      },
+      "f1": {
+        "fold_scores": [
+          0.4021,
+          0.4214,
+          0.3673,
+          0.3931,
+          0.3711
+        ],
+        "mean": 0.391,
+        "std": 0.02
+      },
+      "roc_auc": {
+        "fold_scores": [
+          0.7635,
+          0.7693,
+          0.7232,
+          0.7717,
+          0.7139
+        ],
+        "mean": 0.7483,
+        "std": 0.0246
+      },
+      "average_precision": {
+        "fold_scores": [
+          0.3471,
+          0.3362,
+          0.2821,
+          0.3706,
+          0.2995
+        ],
+        "mean": 0.3271,
+        "std": 0.0321
+      }
+    }
+  }
+}

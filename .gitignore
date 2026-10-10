@@ -1,0 +1,7 @@
+# Entorno local de Python; se recrea en cada computadora con requirements.txt.
+.venv/
+# Archivos temporales que Python genera al importar módulos.
+__pycache__/
+*.py[cod]
+# ZIP de UCI redundante cuando el CSV original ya está incluido.
+datos/originales/archivo_original_uci.zip
