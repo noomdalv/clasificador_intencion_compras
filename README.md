@@ -151,7 +151,7 @@ La programación orientada a objetos (POO) organiza el código en **clases** que
 ### Estructura de carpetas y archivos
 
 ```text
-online_shoppers_project/
+clasificador_intencion_compras/
 ├── clasificador_compras/       # Clases y componentes reutilizables
 │   ├── __init__.py             # Expone las clases principales del paquete
 │   ├── flujo_datos.py          # Rutas, auditoría, exploración y partición
